@@ -2675,3 +2675,88 @@ section,
   color: var(--contrast-color);
   background: color-mix(in srgb, var(--accent-color), transparent 15%);
 }
+
+
+/*--------------------------------------------------------------
+# Help Page Specific Styles
+--------------------------------------------------------------*/
+
+/* Page Title Background for Help */
+.help-bg .heading {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 80px 0;
+}
+.help-bg .heading h1 {
+  color: #fff;
+}
+
+/* Category Sidebar */
+.list-group-item {
+  border: none;
+  background-color: transparent;
+  padding: 12px 20px;
+  color: var(--default-color);
+  border-left: 3px solid transparent;
+  border-radius: 0;
+}
+
+.list-group-item.active {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  color: var(--accent-color);
+}
+
+/* Category Title in Content Area */
+.category-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--heading-color);
+  scroll-margin-top: 100px; /* Offset for sticky header */
+}
+
+/* Accordion Custom Styling */
+.custom-accordion .accordion-item {
+  border: none;
+  border-bottom: 1px solid #eee;
+  background-color: transparent;
+}
+
+.custom-accordion .accordion-button {
+  background-color: transparent;
+  color: var(--default-color);
+  font-weight: 600;
+  padding: 20px 0;
+  box-shadow: none;
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+  color: var(--accent-color);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.custom-accordion .accordion-button:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.custom-accordion .accordion-body {
+  padding: 0 0 20px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  line-height: 1.6;
+}
+
+/* Fix Scroll Spy behavior for sidebar */
+html {
+  scroll-behavior: smooth;
+}

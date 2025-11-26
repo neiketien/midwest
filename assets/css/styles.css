@@ -2760,3 +2760,48 @@ section,
 html {
   scroll-behavior: smooth;
 }
+
+/*--------------------------------------------------------------
+# Community Page Styles
+--------------------------------------------------------------*/
+
+/* Community Hero */
+.community-hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/hero-bg.jpeg'); /* Reusing existing hero image */
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  margin-top: -20px; /* Offset spacing if needed based on header */
+}
+
+/* Colors for Avatars */
+.bg-purple { background-color: #6f42c1 !important; }
+.bg-orange { background-color: #fd7e14 !important; }
+.bg-teal { background-color: #20c997 !important; }
+
+/* Pointer Cursor for fake inputs */
+.pointer-cursor {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.pointer-cursor:hover {
+  transform: translateY(-2px);
+}
+
+/* Like Button Animation */
+.like-btn.liked i {
+  color: #e63946;
+  font-weight: 900 !important; /* Force filled icon */
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
+/* Comment Section */
+.comments-section {
+  font-size: 0.95rem;
+}

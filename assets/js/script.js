@@ -51,6 +51,98 @@
       e.stopImmediatePropagation();
     });
   });
+  
+  // --- Community Page Logic ---
+
+  // 1. Post Submission
+  const postForm = document.getElementById('createPostForm');
+  if (postForm) {
+    postForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const title = document.getElementById('postTitle').value;
+      const content = document.getElementById('postContent').value;
+      const container = document.getElementById('new-posts-container');
+      
+      // Get Modal Instance to hide it
+      const modalEl = document.getElementById('newPostModal');
+      const modal = bootstrap.Modal.getInstance(modalEl);
+      
+      // Create HTML Structure for new post
+      const newPostHTML = `
+        <div class="card border-0 shadow-sm mb-4 rounded-4" data-aos="fade-up">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="avatar bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; font-size: 20px;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">Guest User</h6>
+                        <span class="text-muted small">Just now • General</span>
+                    </div>
+                </div>
+                <h5 class="fw-bold">${title}</h5>
+                <p class="card-text">${content}</p>
+                <div class="d-flex gap-4 pt-2 border-top">
+                    <button class="btn btn-link text-decoration-none text-muted p-0 like-btn"><i class="bi bi-heart"></i> <span class="count">0</span> Likes</button>
+                    <button class="btn btn-link text-decoration-none text-muted p-0"><i class="bi bi-chat"></i> 0 Comments</button>
+                </div>
+            </div>
+        </div>
+      `;
+
+      // Prepend to feed
+      container.insertAdjacentHTML('afterbegin', newPostHTML);
+      
+      // Reset and Close
+      postForm.reset();
+      modal.hide();
+
+      // Show Success Toast
+      const toast = document.getElementById('success-notification');
+      toast.querySelector('.message-text').textContent = "Post Published!";
+      toast.classList.add('active');
+      setTimeout(() => { toast.classList.remove('active'); }, 3000);
+    });
+  }
+
+  // 2. Like Button Logic (Delegation for dynamic content)
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.like-btn')) {
+      const btn = e.target.closest('.like-btn');
+      const icon = btn.querySelector('i');
+      const countSpan = btn.querySelector('.count');
+      let count = parseInt(countSpan.textContent);
+
+      if (btn.classList.contains('liked')) {
+        btn.classList.remove('liked');
+        icon.classList.remove('bi-heart-fill');
+        icon.classList.add('bi-heart');
+        countSpan.textContent = count - 1;
+      } else {
+        btn.classList.add('liked');
+        icon.classList.remove('bi-heart');
+        icon.classList.add('bi-heart-fill');
+        countSpan.textContent = count + 1;
+      }
+    }
+
+    // 3. Toggle Comments Logic
+    if (e.target.closest('.toggle-comments')) {
+        const btn = e.target.closest('.toggle-comments');
+        // Find the closest card body, then find the .comments-section within it
+        const cardBody = btn.closest('.card-body');
+        const commentSection = cardBody.querySelector('.comments-section');
+        
+        if(commentSection) {
+            if (commentSection.style.display === "none") {
+                commentSection.style.display = "block";
+            } else {
+                commentSection.style.display = "none";
+            }
+        }
+    }
+  });
 
   /**
    * Scroll top button

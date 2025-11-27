@@ -1,0 +1,388 @@
+---
+permalink: /switch/
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Switch to Us | Midwest Light and Power</title>
+  <meta name="description" content="Get an energy quote in minutes and switch to Midwest Light and Power.">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/assets/css/styles.css" rel="stylesheet">
+</head>
+
+<body class="switch-page light-background">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+      <input type="checkbox" id="checkbox">
+      <label for="checkbox" class="toggle d-xl-none me-3">
+          <div class="bars" id="bar1"></div>
+          <div class="bars" id="bar2"></div>
+          <div class="bars" id="bar3"></div>
+      </label>
+      <a href="https://neiketien.github.io/midwest/" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="/assets/img/logo.png" alt="Midwest Logo">
+      </a>
+      <nav id="navmenu" class="navmenu ms-auto">
+      <ul>
+        <li><a href="https://neiketien.github.io/midwest">Home</a></li>
+        <li><a href="https://neiketien.github.io/midwest/about">About</a></li>
+        <li><a href="https://neiketien.github.io/midwest/outages">View and Report Outages</a></li>
+        <li><a href="https://neiketien.github.io/midwest/help">Help</a></li>
+        <li><a href="https://neiketien.github.io/midwest/blog">Blog</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn-getstarted flex-md-shrink-0 ms-3" href="https://neiketien.github.io/midwest/login">Login</a>
+  </div>
+</header>
+
+  <main class="main" style="padding-top: 100px; padding-bottom: 60px;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-white border-0 pt-4 pb-0 px-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold text-primary mb-0" style="color: #4ba4fd ! important;" id="wizard-title">Step 1 of 3: Get a quote</h5>
+                    <!--<span class="badge bg-light text-dark border rounded-pill" id="step-indicator">1/3</span>-->
+                </div>
+                
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" id="main-progress-bar" role="progressbar" style="width: 33%; transition: width 0.6s ease;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <div class="card-body p-4 p-md-5">
+              <form id="switch-wizard-form" novalidate>
+                <div class="wizard-step active" id="step-1">
+                    <h2 class="fw-bold mb-2">Get an energy quote in minutes</h2>
+                    <p class="text-muted mb-4">Tell us about your property</p>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold small text-muted">Postal Code</label>
+                        <input type="text" class="form-control form-control-lg" id="postal-code" placeholder="e.g. 100211" required>
+                        <div class="custom-error-msg">This field is required</div>
+                        <div id="invalid-postal-msg" class="custom-error-msg" style="display:none;">Invalid postal code</div>
+                        
+                        <button type="button" id="find-address-btn" class="btn btn-primary mt-3 px-4 rounded-pill fw-bold" style="background-color: #4ba4fd ! important; border-color: #4ba4fd ! important;">
+                            Find Address
+                            <div class="loader d-none ms-2" id="address-loader"></div>
+                        </button>
+                    </div>
+
+                    <div id="address-results" class="mt-4 p-3 bg-light rounded border d-none fade-in">
+                        <h6 class="fw-bold mb-3 small text-muted">Select your address:</h6>
+                        <div class="list-group mb-3" id="address-list">
+                        </div>
+                        <button type="button" id="confirm-address-btn" class="btn btn-dark w-100 py-2 rounded-pill fw-bold" disabled>Choose this address</button>
+                    </div>
+
+                    <div class="row mt-5 g-4 border-top pt-4">
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <i class="bi bi-shield-check text-success fs-3 me-3"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-1">You’re in safe hands</h6>
+                                    <p class="small text-muted mb-0">Customer service that you can rely on. Switching is super-simple.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex">
+                                <i class="bi bi-lightning-charge text-warning fs-3 me-3"></i>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Super Fast Switch</h6>
+                                    <p class="small text-muted mb-0">Your switch can be done on the same day if you complete your sign up before 5PM.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-step d-none" id="step-2">
+                    <h2 class="fw-bold mb-2">What are your energy needs?</h2>
+                    <p class="text-muted mb-4">Let’s find you the right tariff</p>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold small text-muted">What type of building?</label>
+                        <select class="form-select form-select-lg" id="building-type">
+                            <option value="" selected disabled>Select Type...</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="industrial">Industrial</option>
+                        </select>
+                        <div class="custom-error-msg">Please select a building type</div>
+                    </div>
+
+                    <div class="mb-4 d-none fade-in" id="residential-options">
+                        <label class="form-label fw-bold small text-muted">Property Layout</label>
+                        <select class="form-select" id="res-layout">
+                            <option value="1-bed">One bedroom flat</option>
+                            <option value="2-bed">2 bedroom flat</option>
+                            <option value="3-bed">3 bedroom flat</option>
+                            <option value="duplex">Duplex</option>
+                            <option value="other">Others</option>
+                        </select>
+                        <input type="text" class="form-control mt-2 d-none" id="res-other" placeholder="Please specify...">
+                    </div>
+
+                    <div class="mb-4 d-none fade-in" id="commercial-options">
+                        <label class="form-label fw-bold small text-muted">Business Type</label>
+                        <select class="form-select" id="com-layout">
+                            <option value="shop">Single shop(s)</option>
+                            <option value="plaza">Plaza</option>
+                            <option value="arena">Commercial Arena</option>
+                            <option value="other">Others</option>
+                        </select>
+                        <input type="text" class="form-control mt-2 d-none" id="com-other" placeholder="Please specify...">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold small text-muted d-block">Do you currently have a prepaid meter installed?</label>
+                        <div class="btn-group w-100" role="group">
+                            <input type="radio" class="btn-check" name="hasMeter" id="meterYes" autocomplete="off" value="yes">
+                            <label class="btn btn-outline-primary py-3" for="meterYes" style="border-color: #4ba4fd ! important;">Yes</label>
+                          
+                            <input type="radio" class="btn-check" name="hasMeter" id="meterNo" autocomplete="off" value="no">
+                            <label class="btn btn-outline-primary py-3" for="meterNo" style="border-color: #4ba4fd ! important;">No</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 d-none fade-in" id="meter-number-group">
+                        <label class="form-label fw-bold small text-muted">Enter Meter Number</label>
+                        <input type="text" class="form-control" id="meter-number" placeholder="e.g. 041823...">
+                        <div class="custom-error-msg">Meter number is required</div>
+                    </div>
+                    
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Nature of Property?</label>
+                            <select class="form-select" id="prop-nature">
+                                <option value="old">Old</option>
+                                <option value="new">New</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold small text-muted">Nature of Connection?</label>
+                            <select class="form-select" id="conn-nature">
+                                <option value="existing">Existing</option>
+                                <option value="new">New</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-5">
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-4 prev-step">Back</button>
+                        <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold next-step" id="step-2-next" style="background-color: #4ba4fd !important; border-color: #4ba4fd !important;">Next Step</button>
+                    </div>
+                </div>
+
+                <div class="wizard-step d-none" id="step-3">
+                    <h2 class="fw-bold mb-2">Appliances & Usage</h2>
+                    <p class="text-muted mb-4">Help us estimate your load requirements</p>
+
+                    <div class="alert alert-info border-0 d-flex align-items-center mb-4">
+                        <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                        <span id="usage-context-msg">Since you don't have a meter, we will estimate based on your appliances.</span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold small text-muted">Select Major Appliances (Select all that apply)</label>
+                        <div class="row g-2">
+                            <div class="col-6 col-md-4">
+                                <input type="checkbox" class="btn-check" id="app-ac" autocomplete="off">
+                                <label class="btn btn-outline-secondary w-100 d-flex flex-column align-items-center p-3 h-100" for="app-ac">
+                                    <i class="bi bi-fan fs-3 mb-2"></i> Air Conditioner
+                                </label>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <input type="checkbox" class="btn-check" id="app-fridge" autocomplete="off">
+                                <label class="btn btn-outline-secondary w-100 d-flex flex-column align-items-center p-3 h-100" for="app-fridge">
+                                    <i class="bi bi-box fs-3 mb-2"></i> Fridge/Freezer
+                                </label>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <input type="checkbox" class="btn-check" id="app-pump" autocomplete="off">
+                                <label class="btn btn-outline-secondary w-100 d-flex flex-column align-items-center p-3 h-100" for="app-pump">
+                                    <i class="bi bi-droplet fs-3 mb-2"></i> Water Pump
+                                </label>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <input type="checkbox" class="btn-check" id="app-heater" autocomplete="off">
+                                <label class="btn btn-outline-secondary w-100 d-flex flex-column align-items-center p-3 h-100" for="app-heater">
+                                    <i class="bi bi-thermometer-sun fs-3 mb-2"></i> Water Heater
+                                </label>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <input type="checkbox" class="btn-check" id="app-tv" autocomplete="off">
+                                <label class="btn btn-outline-secondary w-100 d-flex flex-column align-items-center p-3 h-100" for="app-tv">
+                                    <i class="bi bi-tv fs-3 mb-2"></i> TV / Sound
+                                </label>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <input type="checkbox" class="btn-check" id="app-wash" autocomplete="off">
+                                <label class="btn btn-outline-secondary w-100 d-flex flex-column align-items-center p-3 h-100" for="app-wash">
+                                    <i class="bi bi-recycle fs-3 mb-2"></i> Washing Machine
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold small text-muted">Est. Hours of Usage per Day</label>
+                        <input type="range" class="form-range" min="0" max="24" id="usageRange" oninput="this.nextElementSibling.value = this.value + ' Hours'">
+                        <output class="fw-bold text-primary">12 Hours</output>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-5">
+                        <button type="button" class="btn btn-outline-secondary rounded-pill px-4 prev-step">Back</button>
+                        <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold w-55" id="generate-quote-btn" style="background-color: #4ba4fd !important; border-color: #4ba4fd !important;">
+                            See my tariff plan
+                            <div class="loader d-none ms-2" id="quote-loader"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ================= RESULT: Tariff Plan ================= -->
+                <div class="wizard-step d-none" id="step-result">
+                    <div class="text-center mb-4">
+                        <div class="icon-box-circle mx-auto mb-3 bg-success text-white border-success">
+                            <i class="bi bi-check-lg"></i>
+                        </div>
+                        <h2 class="fw-bold">Your Perfect Match!</h2>
+                        <p class="text-muted">Based on your profile, we recommend:</p>
+                    </div>
+
+                    <div class="card bg-light border-primary border-2 mb-4" style="border-color: #4ba4fd !important;">
+                        <div class="card-body text-center p-4">
+                            <h3 class="text-primary fw-bold mb-1" style="color: #4ba4fd !important;">SuperSave Plan</h3>
+                            <div class="price display-4 fw-bold text-dark mb-2">
+                                <sup>₦</sup>108.80<span class="fs-6 text-muted fw-normal"> / kWh</span>
+                            </div>
+                            <p class="small text-muted mb-3">(Peak Period Rate)</p>
+                            
+                            <ul class="list-unstyled text-start mx-auto" style="max-width: 300px;">
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> 100% Renewable Energy</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> No Hidden Fees</li>
+                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Mobile App Tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning border-0 small">
+                        <i class="bi bi-exclamation-circle-fill me-2"></i>
+                        We'll take care of the switch for you. Once your order is confirmed, we'll let your current provider know you’ll be joining us.
+                    </div>
+
+                    <div class="mt-4">
+                        <h5 class="fw-bold mb-3">Proceed with this plan?</h5>
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" placeholder="Full Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Email Address" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" placeholder="Phone Number" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 mt-4 rounded-pill fw-bold text-uppercase shadow-sm" style="background-color: #4ba4fd !important; border-color: #4ba4fd !important;">Complete Switch</button>
+                    </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="https://neiketien.github.io/midwest" class="d-flex footer-logo align-items-center">
+            <img src="/assets/img/logo.png" alt="">
+          </a>
+          <div class="footer-contact pt-3">
+            <p>38 Adam Gyang Street</p>
+            <p>Waterloo, Amassien</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>0800-MIDWEST</span></p>
+            <p><strong>Email:</strong> <span>hello@midwest.com</span></p>
+          </div>
+        </div>
+        <div class="social-links d-flex">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        <div class="col-lg-2 col-md-3 footer-links">
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/what-we-do">What We Do</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/our-energy">Our Energy</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/our-strategy">Our Strategy</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/tariffs">Tariffs</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/payment-options">Payment Options</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/login">Sign In</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/switch">Switching to Midwest</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/help">Help</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/meters">Meters</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/struggling-to-pay">Struggling to Pay</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-3 footer-links">
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/blog">Blog</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/community">Community</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/careers">Careers</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/policies">Policies</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://neiketien.github.io/midwest/terms-of-service">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  <!-- Success Toast -->
+  <div id="success-notification" class="custom-toast">
+    <svg class="wave" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path d="M0,256L11.4,240C22.9,224,46,192,69,192C91.4,192,114,224,137,234.7C160,245,183,235,206,213.3C228.6,192,251,160,274,149.3C297.1,139,320,149,343,181.3C365.7,213,389,267,411,282.7C434.3,299,457,277,480,250.7C502.9,224,526,192,549,181.3C571.4,171,594,181,617,208C640,235,663,277,686,256C708.6,235,731,149,754,122.7C777.1,96,800,128,823,165.3C845.7,203,869,245,891,224C914.3,203,937,117,960,112C982.9,107,1006,181,1029,197.3C1051.4,213,1074,171,1097,144C1120,117,1143,107,1166,133.3C1188.6,160,1211,224,1234,218.7C1257.1,213,1280,139,1303,133.3C1325.7,128,1349,192,1371,192C1394.3,192,1417,128,1429,96L1440,64L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z" fill-opacity="1"></path></svg>
+    <div class="icon-container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"></path></svg></div>
+    <div class="message-text-container"><p class="message-text">Post Published!</p><p class="sub-text">Thanks for contributing.</p></div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15" stroke-width="0" fill="none" stroke="currentColor" class="cross-icon" id="close-toast"><path fill="currentColor" d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+  </div>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/aos/aos.js"></script>
+  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets/js/script.js"></script>
+</body>
+</html>

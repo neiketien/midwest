@@ -1,0 +1,6 @@
+# The URL of your site
+url: "https://neiketien.github.io"
+
+# The base hostname & protocol for your site.
+# For a project page, this MUST be the repository name.
+baseurl: "/midwest"
